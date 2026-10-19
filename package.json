@@ -1,0 +1,54 @@
+{
+  "name": "@davidrydberg/mergeq",
+  "version": "0.1.0",
+  "description": "Agent-ergonomic CLI that tells you which open pull requests you can merge, which ones conflict, and in what order to merge them.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidrydberg/mergeq.git"
+  },
+  "homepage": "https://github.com/davidrydberg/mergeq#readme",
+  "bugs": {
+    "url": "https://github.com/davidrydberg/mergeq/issues"
+  },
+  "author": "David Rydberg <david@davidrydberg.dev>",
+  "type": "module",
+  "bin": {
+    "mergeq": "dist/bin/mergeq.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "agents",
+    "pull-requests",
+    "merge",
+    "conflicts",
+    "github"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && chmod +x dist/bin/mergeq.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@toon-format/toon": "^4.4.0"
+  }
+}
